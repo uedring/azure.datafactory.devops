@@ -1,0 +1,64 @@
+{
+    "manifestVersion": 1,
+    "id": "DataFactoryTools",
+    "name": "Validate ADF code",
+    "version": "1.0.2",
+    "publisher": "ADFvalidation",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ], 
+    "tags": [
+        "Extension",
+        "Marketplace",
+        "DevOps",
+        "Azure Data Factory"
+      ],
+    "description": "Validates all JSON files of ADF (v2) .",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "public": true,
+    "files": [
+        {
+            "path": "adfValidateTask"
+        },
+        {
+            "path":"images",
+            "addressable":true
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "license"
+        }
+    },
+    "repository": {
+        "type": "azureRepos",
+        "uri": "https://msasg.visualstudio.com/Bing_Ads/_git/AdsTargetingADF"
+    },
+    "links": {
+        "support": {
+          "uri": "mailto:v-aaye@microsoft.com"
+        }
+    },
+    "contributions": [
+        {
+            "id": "ValidateADF",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "adfValidateTask"
+            }
+        }
+    ]
+}
