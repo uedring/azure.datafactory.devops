@@ -34,19 +34,19 @@
     ],
     "content": {
         "details": {
-            "path": "overview.md"
+            "path": "README.md"
         },
         "license": {
             "path": "license"
         }
     },
     "repository": {
-        "type": "azureRepos",
-        "uri": "https://msasg.visualstudio.com/Bing_Ads/_git/AdsTargetingADF"
+        "type": "git",
+        "uri": "https://github.com/uedring/azure.datafactory.devops"
     },
     "links": {
         "support": {
-          "uri": "mailto:v-aaye@microsoft.com"
+          "uri": "https://github.com/uedring/azure.datafactory.devops/issues"
         }
     },
     "contributions": [
