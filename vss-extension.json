@@ -1,8 +1,8 @@
-{
+﻿{
     "manifestVersion": 1,
     "id": "DataFactoryTools",
     "name": "Validate ADF code",
-    "version": "1.0.2",
+    "version": "1.0.7",
     "publisher": "ADFvalidation",
     "targets": [
         {

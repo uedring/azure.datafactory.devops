@@ -13,7 +13,7 @@ if ($true -and ($PSEdition -eq 'Desktop'))
 if (Test-Path -Path "$PSScriptRoot\ps_modules" -ErrorAction Ignore)
 {
     Get-ChildItem "$PSScriptRoot\ps_modules" -ErrorAction Stop | Where-Object { $_.Extension -eq '.ps1' } | ForEach-Object {
-        Write-Host "Importing cmdlet '$($_.Name)'."
+        Write-Verbose "Importing cmdlet '$($_.Name)'."
         . $_.FullName
     }
 }
