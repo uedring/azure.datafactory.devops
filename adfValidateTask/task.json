@@ -10,7 +10,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 7
+    "Patch": 8
   },
   "visibility": [
     "Build",
@@ -25,6 +25,14 @@
       "label": "Azure Data Factory Root Path",
       "required": true,
       "helpMarkDown": "Path from the repo root to the ADF folder which should contains sub-folders like 'pipeline', 'dataset', etc."
+    },
+    {
+      "name": "ContinueOnError",
+      "type": "boolean",
+      "label": "Continue On Error",
+      "required": true,
+      "defaultValue": false,
+      "helpMarkDown": "Whether to exit the task when an error occurs."
     }
   ],
   "execution": {
@@ -36,3 +44,4 @@
     }
   }
 }
+
