@@ -18,14 +18,21 @@ function Import-AdfObjects {
 
     Write-Verbose "Folder: $folder"
     $jsonFiles = Get-ChildItem "$folder" -Filter "*.json" | Where-Object { !$_.Name.StartsWith('~') };
-    foreach($_ in $jsonFiles) {
-        Write-Verbose "- $($_.Name)"
-        $txt = Get-Content $_.FullName -Encoding "UTF8"
+    foreach($item in $jsonFiles) {
+        Write-Verbose "- $($item.Name)"
+        $txt = Get-Content $item.FullName -Encoding "UTF8"
         $o = New-Object -TypeName AdfObject 
-        $o.Name = $_.BaseName
+        $o.Name = $item.BaseName
         $o.Type = $SubFolder
-        $o.FileName = $_.FullName
-        $o.Body = $txt | ConvertFrom-Json
+        $o.FileName = $item.FullName
+        
+        try {
+           $o.Body = $txt | ConvertFrom-Json
+        }
+        catch{
+           throw ("Invalid json file: {0} `r`n{1}" -f $item.FullName, $_.Exception.Message)
+        }
+
         $m = [regex]::matches($txt,'"referenceName":\s*?"(?<r>.+?)",[\n\r\s]+"type":\s*?"(?<t>.+?)"')
         $m | ForEach-Object {
             $o.AddDependant( $_.Groups['r'].Value, $_.Groups['t'].Value ) | Out-Null
@@ -33,7 +40,7 @@ function Import-AdfObjects {
         $Adf.AllObjectName.Add($o.Name)
         $o.Adf = $Adf
         $All.Add($o)
-        Write-Verbose ("- {0} : found {1} dependencies." -f $_.BaseName, $o.DependsOn.Count)
+        Write-Verbose ("- {0} : found {1} dependencies." -f $item.BaseName, $o.DependsOn.Count)
     }
 
 }
