@@ -9,6 +9,7 @@ class Adf {
     [string] $ResourceGroupName = ""
     [string] $Region = ""
     [System.Collections.ArrayList] $Pipelines = @{}
+    [System.Collections.ArrayList] $Credentials = @{}
     [System.Collections.ArrayList] $LinkedServices = @{}
     [System.Collections.ArrayList] $DataSets = @{}
     [System.Collections.ArrayList] $DataFlows = @{}
@@ -21,7 +22,7 @@ class Adf {
 
     [System.Collections.ArrayList] AllObjects()
     {
-        return $this.LinkedServices + $this.Pipelines + $this.DataSets + $this.DataFlows + $this.Triggers + $this.IntegrationRuntimes + $this.Factories
+        return $this.Pipelines + $this.DataSets + $this.DataFlows + $this.Triggers + $this.LinkedServices + $this.Credentials + $this.IntegrationRuntimes + $this.Factories
     }
 
     [hashtable] GetObjectsByFullName([string]$pattern)
